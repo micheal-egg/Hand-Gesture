@@ -16,7 +16,7 @@ with mp_hands.Hands(
     min_detection_confidence=0.6,
     min_tracking_confidence=0.6
 ) as hands:
-    #Continuously take from my webcam with a loop
+    #Continues to take from my webcam with a loop
     while True:
         #For reading my frame
         ret, frame = cap.read()
@@ -36,9 +36,19 @@ with mp_hands.Hands(
         if result.multi_hand_landmarks:
             #For each detected hand(I used One) draw the dots and lines 
             for hand_lms in result.multi_hand_landmarks:
+                index_tip = hand_lms.landmark[8]
+                #print("Index tip:", round(index_tip.x, 3), round(index_tip.y, 3))
                 mp_draw.draw_landmarks(frame, hand_lms, mp_hands.HAND_CONNECTIONS)
+                #With enumerate, it gets the pair of the index and the landmark.
+                for i, lm in enumerate(hand_lms.landmark):
+                    #Put a number next to each landmark, converted the number to a string since it is needed by frame
+                    cv2.putText(frame, str(i),
+                    #Multiply the x and y by the width and height of the frame to get the correct position
+                    (int(lm.x * frame.shape[1]), int(lm.y * frame.shape[0])),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,255,0), 1)
 
-        #Show the frame in the box called Camera Feed 
+
+        #Show the frame in the box called Camera Feed
         cv2.imshow("Camera Feed", frame)
 
         #Makes it end with pressing q key 
