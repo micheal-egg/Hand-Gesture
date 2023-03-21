@@ -58,7 +58,16 @@ with mp_hands.Hands(
                 ring_up   = ring_tip.y < ring_pip.y
                 pinky_up  = pinky_tip.y < pinky_pip.y
 
-                #Using Formatted string to make it easier for me 
+                #Gesture Logic
+
+                palm = thumb_up and index_up and middle_up and ring_up and pinky_up
+                fist = not thumb_up and not index_up and not middle_up and not ring_up and not pinky_up
+                peace = not thumb_up and index_up and middle_up and not ring_up and not pinky_up
+                naughty = not thumb_up and not index_up and middle_up and not ring_up and not pinky_up
+                thumbs_up = thumb_up and not index_up and not middle_up and not ring_up and not pinky_up
+
+
+                #Using Formatted string to make it easier for me
                 cv2.putText(frame, f"Thumb up: {thumb_up}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
                 cv2.putText(frame, f"Pinky up: {pinky_up}", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
                 cv2.putText(frame, f"Index up: {index_up}", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
@@ -69,7 +78,18 @@ with mp_hands.Hands(
                 mp_draw.draw_landmarks(frame, hand_lms, mp_hands.HAND_CONNECTIONS)
                 #With enumerate, it gets the pair of the index and the landmark.
                 for i, lm in enumerate(hand_lms.landmark):
-                    
+
+                    if palm == True:
+                        cv2.putText(frame, "Palm", (400, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                    if fist == True:
+                        cv2.putText(frame, "Fist", (400, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                    if peace == True:
+                        cv2.putText(frame, "Peace", (400, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                    if naughty == True:
+                        cv2.putText(frame, "Naughty", (400, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                    if thumbs_up == True:
+                        cv2.putText(frame, "Thumbs Up", (400, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
                     #Put a number next to each landmark, converted the number to a string since it is needed by frame
                     #Multiply the x and y by the width and height of the frame to get the correct position
                     cv2.putText(frame, str(i), (int(lm.x * frame.shape[1]), int(lm.y * frame.shape[0])), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,255,0), 1)
