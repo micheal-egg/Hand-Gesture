@@ -30,10 +30,10 @@ Landmark visualization for debugging and learning
 
 ## 🛠 Tech Stack
 
-- Python
-- OpenCV
-- MediaPipe
-- NumPy
+- **Python**
+- **OpenCV**
+- **MediaPipe**
+- **NumPy**
 
 ## 📦 Installation & Setup
 
@@ -45,8 +45,9 @@ Landmark visualization for debugging and learning
     ```
 2. Create Virtual Environment & Activate It
 
-    ``` python -m venv venv 
-        venv\Scripts\activate
+    ```
+    python -m venv venv 
+    venv\Scripts\activate
     ```
 
 3. Install Dependencies
