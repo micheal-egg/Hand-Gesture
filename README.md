@@ -1,8 +1,8 @@
 # Hand Gesture Recognition ✋🤖
 
-A real-time computer vision application built with **Python**, **OpenCV**, and **MediaPipe** that detects hand gestures via webcam and overlays animated emoji-style graphics directly onto the video feed—similar to FaceTime gesture reactions.
+A real-time computer vision application built with **Python**, **OpenCV**, and **MediaPipe** that detects hand gestures via reversed webcam and overlays animated emoji-style graphics directly onto the video feed—similar to FaceTime gesture reactions.
 
-This project focuses on learning-by-building, emphasizing how hand landmarks, coordinate systems, and image overlays work together in real-time vision systems.
+This project focuses on learning-by-building, emphasizing how hand landmarks, coordinate systems, and image overlays work together in real-time vision systems. So far it only uses one hand
 
 ## 🚀 Features
 
